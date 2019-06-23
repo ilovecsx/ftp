@@ -49,14 +49,14 @@ public class Serve extends JFrame {
 	private DefaultMutableTreeNode node = null;
 	JTree tree;
 	TreePath treePath;
-	File file = new File("E:" + File.separatorChar + "ÅÀ³æĞ¡Ëµ");
+	File file = new File("E:" + File.separatorChar + "çˆ¬è™«å°è¯´");
 	JScrollPane scrollPane;
 	JTextField pathName;
 	JButton load;
 	Thread t=null;
 
 	public Serve() throws IOException {
-		super("·şÎñ¶Ë");
+		super("æœåŠ¡ç«¯");
 		this.setSize(650, 480);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,7 +67,7 @@ public class Serve extends JFrame {
 	}
 
 	/**
-	 * ³õÊ¼»¯North°å¿é
+	 * åˆå§‹åŒ–Northæ¿å—
 	 * @throws UnknownHostException 
 	 */
 	public void InitNorth() throws UnknownHostException {
@@ -75,44 +75,44 @@ public class Serve extends JFrame {
 		North.setLayout(new FlowLayout());
 		North.setBackground(Color.white);
 
-		JLabel ip=new JLabel("·şÎñÆ÷IP:"+InetAddress.getLocalHost().getHostAddress());
+		JLabel ip=new JLabel("æœåŠ¡å™¨IP:"+InetAddress.getLocalHost().getHostAddress());
 		ip.setForeground(Color.blue);
-		ip.setFont(new Font("ºÚÌå", 11, 14));
-		pathName = new JTextField("ÇëÖ¸¶¨×ÊÔ´Â·¾¶");
+		ip.setFont(new Font("é»‘ä½“", 11, 14));
+		pathName = new JTextField("è¯·æŒ‡å®šèµ„æºè·¯å¾„");
 		pathName.setOpaque(false);
-		pathName.setFont(new Font("ºÚÌå", 11, 13));
+		pathName.setFont(new Font("é»‘ä½“", 11, 13));
 		textSet(pathName);
 		pathName.addCaretListener(new CaretListener() {
 
 			@Override
 			public void caretUpdate(CaretEvent e) {
 				// TODO Auto-generated method stub
-				if (pathName.getText().equals("ÇëÖ¸¶¨×ÊÔ´Â·¾¶"))
+				if (pathName.getText().equals("è¯·æŒ‡å®šèµ„æºè·¯å¾„"))
 					pathName.setText("");
 			}
 		});
 
-		load = new JButton("È·ÈÏ");
+		load = new JButton("ç¡®è®¤");
 		load.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String path = pathName.getText();
 				if (path == null) {
-					JOptionPane.showMessageDialog(Serve.this, "×ÊÔ´Â·¾¶²»ÄÜÎª¿Õ!");
+					JOptionPane.showMessageDialog(Serve.this, "èµ„æºè·¯å¾„ä¸èƒ½ä¸ºç©º!");
 					return;
 				}
 				if (!path.endsWith("\\"))
 					path = path + '\\';
 				File file = new File(path);
 				if (!file.exists()) {
-					JOptionPane.showMessageDialog(Serve.this, "Â·¾¶ÓĞÎó!");
+					JOptionPane.showMessageDialog(Serve.this, "è·¯å¾„æœ‰è¯¯!");
 					return;
 				}
-				System.out.println("ÕâÀï»¹ÓĞ");
+				System.out.println("è¿™é‡Œè¿˜æœ‰");
 				if(t!=null&&t.isAlive())
 					return ;
-				System.out.println("ÕâÀïÃ»ÁË");
+				System.out.println("è¿™é‡Œæ²¡äº†");
 				t=new Thread(new Threadload(path));
 				t.start();
 				if (oneServe) {
@@ -150,10 +150,10 @@ public class Serve extends JFrame {
 	}
 	
 	/**
-	 * ÏìÓ¦Á¬½ÓÇëÇó
-	 * 10020¶Ë¿Ú½ÓÊÕÁ¬½Ó·¢ËÍÎÄ¼şÄ¿Â¼
-	 * 10022¶Ë¿Ú½ÓÊÕ¿Í»§¶ËÇëÇóµÄÎÄ¼şÃû£¬·µ»Ø³¤¶È
-	 * 10024¶Ë¿Ú½ÓÊÕ¿Í»§¶ËËùĞèµÄÎÄ¼ş¶Î£¬·¢ËÍÎÄ¼ş
+	 * å“åº”è¿æ¥è¯·æ±‚
+	 * 10020ç«¯å£æ¥æ”¶è¿æ¥å‘é€æ–‡ä»¶ç›®å½•
+	 * 10022ç«¯å£æ¥æ”¶å®¢æˆ·ç«¯è¯·æ±‚çš„æ–‡ä»¶åï¼Œè¿”å›é•¿åº¦
+	 * 10024ç«¯å£æ¥æ”¶å®¢æˆ·ç«¯æ‰€éœ€çš„æ–‡ä»¶æ®µï¼Œå‘é€æ–‡ä»¶
 	 * @throws IOException
 	 */
 	public void accpet() throws IOException {
@@ -201,7 +201,7 @@ public class Serve extends JFrame {
 	}
 
 	/**
-	 * ³õÊ¼»¯ÖĞĞÄ°å¿é
+	 * åˆå§‹åŒ–ä¸­å¿ƒæ¿å—
 	 */
 	public void InitCenter() {
 		p0 = new JPanel();
@@ -212,7 +212,7 @@ public class Serve extends JFrame {
 		//p2.setBackground(Color.white);
 		p0.add(p1,"Center");
 		//p0.add(p2);
-		top = new DefaultMutableTreeNode("¹©ÏÂÔØ×ÊÔ´");
+		top = new DefaultMutableTreeNode("ä¾›ä¸‹è½½èµ„æº");
 		root = new DefaultTreeModel(top);
 		tree = new JTree(root);
 		scrollPane = new JScrollPane(tree);
@@ -222,7 +222,7 @@ public class Serve extends JFrame {
 	}
 
 	/**
-	 * ³õÊ¼»¯Ê÷
+	 * åˆå§‹åŒ–æ ‘
 	 */
 	public void load(String path) {
 		synchronized (top) {
@@ -239,7 +239,7 @@ public class Serve extends JFrame {
 	}
 
 	/**
-	 * µİ¹é±éÀú×ÊÔ´ÎÄ¼ş¼Ğ
+	 * é€’å½’éå†èµ„æºæ–‡ä»¶å¤¹
 	 * 
 	 * @param file
 	 * @param Node
@@ -260,7 +260,7 @@ public class Serve extends JFrame {
 	}
 
 	/**
-	 * ÃÀ»¯ÊäÈë¿ò
+	 * ç¾åŒ–è¾“å…¥æ¡†
 	 */
 	public void textSet(JTextField field) {
 		field.setBackground(Color.blue);
@@ -270,7 +270,7 @@ public class Serve extends JFrame {
 	}
 
 	/**
-	 * ²ÉÓÃtcp·¢ËÍÊ÷
+	 * é‡‡ç”¨tcpå‘é€æ ‘
 	 * 
 	 * @param top
 	 * @param socket
@@ -285,7 +285,7 @@ public class Serve extends JFrame {
 	}
 
 	/**
-	 * ½ÓÊÕ¿Í»§¶ËÇëÇóµÄÎÄ¼şÃû£¬·µ»Ø³¤¶È
+	 * æ¥æ”¶å®¢æˆ·ç«¯è¯·æ±‚çš„æ–‡ä»¶åï¼Œè¿”å›é•¿åº¦
 	 * @author csxwant
 	 *
 	 */
@@ -319,7 +319,7 @@ public class Serve extends JFrame {
 	}
 	
 	/**
-	 * ·¢ËÍ¿Í»§¶ËËùÇëÇóµÄÎÄ¼ş¶Î
+	 * å‘é€å®¢æˆ·ç«¯æ‰€è¯·æ±‚çš„æ–‡ä»¶æ®µ
 	 * @author csxwant
 	 *
 	 */
@@ -345,7 +345,10 @@ public class Serve extends JFrame {
 				byte[] buf = new byte[10240];
 				DataOutputStream out = new DataOutputStream(s.getOutputStream());
 				while (record != length) {
-					int len = ran.read(buf, 0, buf.length);
+					if(length-record<10240)
+						int len=ran.read(buf,0,length-record);
+					else
+						int len = ran.read(buf, 0, buf.length);
 					if (len == -1)
 						break;
 					if (s.isClosed() || !s.isConnected())
