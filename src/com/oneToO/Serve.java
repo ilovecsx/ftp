@@ -345,10 +345,11 @@ public class Serve extends JFrame {
 				byte[] buf = new byte[10240];
 				DataOutputStream out = new DataOutputStream(s.getOutputStream());
 				while (record != length) {
+					int len;
 					if(length-record<10240)
-						int len=ran.read(buf,0,length-record);
+						len=ran.read(buf,0,(int)(length-record));
 					else
-						int len = ran.read(buf, 0, buf.length);
+						len = ran.read(buf, 0, buf.length);
 					if (len == -1)
 						break;
 					if (s.isClosed() || !s.isConnected())
